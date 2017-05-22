@@ -25,8 +25,12 @@ namespace LSRouting
             neighbours.Add(router);
         }
 
-        public void RemoveNeighbour()
+
+        //pasalinus perskaiciuot reikia paketus, issiust lsp nauja
+        public void RemoveNeighbour(Router toRemove)
         {
+            neighbours.Remove(toRemove);
+
 
         }
 
@@ -45,9 +49,5 @@ namespace LSRouting
 
         }
 
-        public void ReceiveMessage()
-        {
-
-        }
     }
 }
