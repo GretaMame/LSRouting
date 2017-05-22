@@ -39,12 +39,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AddRouterGroupBox = new System.Windows.Forms.GroupBox();
+            this.addRouterButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.addRouterTextBox = new System.Windows.Forms.TextBox();
             this.SendMessageGroupBox = new System.Windows.Forms.GroupBox();
-            this.ViewRoutingTableGroupBox = new System.Windows.Forms.GroupBox();
-            this.viewAllButton = new System.Windows.Forms.Button();
-            this.viewButton = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.viewTableRouterTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.msgTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -52,19 +50,21 @@
             this.sendButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.msgRouterNameTextBox1 = new System.Windows.Forms.TextBox();
+            this.ViewRoutingTableGroupBox = new System.Windows.Forms.GroupBox();
+            this.viewAllButton = new System.Windows.Forms.Button();
+            this.viewButton = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.viewTableRouterTextBox = new System.Windows.Forms.TextBox();
             this.RemoveLinkGroupBox = new System.Windows.Forms.GroupBox();
-            this.RemoveRouterGroupBox = new System.Windows.Forms.GroupBox();
-            this.removeRouterButton = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.removeRouterTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.RemLinkNameTextBox2 = new System.Windows.Forms.TextBox();
             this.removeLinkButton = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.RemLinkNameTextBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.RemoveRouterGroupBox = new System.Windows.Forms.GroupBox();
+            this.removeRouterButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.removeRouterTextBox = new System.Windows.Forms.TextBox();
             this.AddLinkGroupBox = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.costTextBox = new System.Windows.Forms.TextBox();
@@ -182,15 +182,41 @@
             // 
             // AddRouterGroupBox
             // 
-            this.AddRouterGroupBox.Controls.Add(this.button2);
+            this.AddRouterGroupBox.Controls.Add(this.addRouterButton);
             this.AddRouterGroupBox.Controls.Add(this.label8);
-            this.AddRouterGroupBox.Controls.Add(this.textBox2);
+            this.AddRouterGroupBox.Controls.Add(this.addRouterTextBox);
             this.AddRouterGroupBox.Location = new System.Drawing.Point(228, 12);
             this.AddRouterGroupBox.Name = "AddRouterGroupBox";
             this.AddRouterGroupBox.Size = new System.Drawing.Size(251, 156);
             this.AddRouterGroupBox.TabIndex = 1;
             this.AddRouterGroupBox.TabStop = false;
             this.AddRouterGroupBox.Text = "Add Router";
+            // 
+            // addRouterButton
+            // 
+            this.addRouterButton.Location = new System.Drawing.Point(9, 121);
+            this.addRouterButton.Name = "addRouterButton";
+            this.addRouterButton.Size = new System.Drawing.Size(100, 23);
+            this.addRouterButton.TabIndex = 2;
+            this.addRouterButton.Text = "Add";
+            this.addRouterButton.UseVisualStyleBackColor = true;
+            this.addRouterButton.Click += new System.EventHandler(this.addRouterButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Router name";
+            // 
+            // addRouterTextBox
+            // 
+            this.addRouterTextBox.Location = new System.Drawing.Point(9, 36);
+            this.addRouterTextBox.Name = "addRouterTextBox";
+            this.addRouterTextBox.Size = new System.Drawing.Size(100, 20);
+            this.addRouterTextBox.TabIndex = 0;
             // 
             // SendMessageGroupBox
             // 
@@ -207,53 +233,6 @@
             this.SendMessageGroupBox.TabIndex = 3;
             this.SendMessageGroupBox.TabStop = false;
             this.SendMessageGroupBox.Text = "Send Message";
-            // 
-            // ViewRoutingTableGroupBox
-            // 
-            this.ViewRoutingTableGroupBox.Controls.Add(this.viewAllButton);
-            this.ViewRoutingTableGroupBox.Controls.Add(this.viewButton);
-            this.ViewRoutingTableGroupBox.Controls.Add(this.label20);
-            this.ViewRoutingTableGroupBox.Controls.Add(this.viewTableRouterTextBox);
-            this.ViewRoutingTableGroupBox.Location = new System.Drawing.Point(228, 12);
-            this.ViewRoutingTableGroupBox.Name = "ViewRoutingTableGroupBox";
-            this.ViewRoutingTableGroupBox.Size = new System.Drawing.Size(251, 156);
-            this.ViewRoutingTableGroupBox.TabIndex = 5;
-            this.ViewRoutingTableGroupBox.TabStop = false;
-            this.ViewRoutingTableGroupBox.Text = "View routing table";
-            // 
-            // viewAllButton
-            // 
-            this.viewAllButton.Location = new System.Drawing.Point(122, 121);
-            this.viewAllButton.Name = "viewAllButton";
-            this.viewAllButton.Size = new System.Drawing.Size(100, 23);
-            this.viewAllButton.TabIndex = 6;
-            this.viewAllButton.Text = "View all";
-            this.viewAllButton.UseVisualStyleBackColor = true;
-            // 
-            // viewButton
-            // 
-            this.viewButton.Location = new System.Drawing.Point(9, 121);
-            this.viewButton.Name = "viewButton";
-            this.viewButton.Size = new System.Drawing.Size(100, 23);
-            this.viewButton.TabIndex = 5;
-            this.viewButton.Text = "View";
-            this.viewButton.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 25);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(68, 13);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "Router name";
-            // 
-            // viewTableRouterTextBox
-            // 
-            this.viewTableRouterTextBox.Location = new System.Drawing.Point(9, 41);
-            this.viewTableRouterTextBox.Name = "viewTableRouterTextBox";
-            this.viewTableRouterTextBox.Size = new System.Drawing.Size(100, 20);
-            this.viewTableRouterTextBox.TabIndex = 3;
             // 
             // label15
             // 
@@ -295,6 +274,7 @@
             this.sendButton.TabIndex = 5;
             this.sendButton.Text = "Send";
             this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // label17
             // 
@@ -312,6 +292,55 @@
             this.msgRouterNameTextBox1.Size = new System.Drawing.Size(100, 20);
             this.msgRouterNameTextBox1.TabIndex = 3;
             // 
+            // ViewRoutingTableGroupBox
+            // 
+            this.ViewRoutingTableGroupBox.Controls.Add(this.viewAllButton);
+            this.ViewRoutingTableGroupBox.Controls.Add(this.viewButton);
+            this.ViewRoutingTableGroupBox.Controls.Add(this.label20);
+            this.ViewRoutingTableGroupBox.Controls.Add(this.viewTableRouterTextBox);
+            this.ViewRoutingTableGroupBox.Location = new System.Drawing.Point(228, 12);
+            this.ViewRoutingTableGroupBox.Name = "ViewRoutingTableGroupBox";
+            this.ViewRoutingTableGroupBox.Size = new System.Drawing.Size(251, 156);
+            this.ViewRoutingTableGroupBox.TabIndex = 5;
+            this.ViewRoutingTableGroupBox.TabStop = false;
+            this.ViewRoutingTableGroupBox.Text = "View routing table";
+            // 
+            // viewAllButton
+            // 
+            this.viewAllButton.Location = new System.Drawing.Point(122, 121);
+            this.viewAllButton.Name = "viewAllButton";
+            this.viewAllButton.Size = new System.Drawing.Size(100, 23);
+            this.viewAllButton.TabIndex = 6;
+            this.viewAllButton.Text = "View all";
+            this.viewAllButton.UseVisualStyleBackColor = true;
+            this.viewAllButton.Click += new System.EventHandler(this.viewAllButton_Click);
+            // 
+            // viewButton
+            // 
+            this.viewButton.Location = new System.Drawing.Point(9, 121);
+            this.viewButton.Name = "viewButton";
+            this.viewButton.Size = new System.Drawing.Size(100, 23);
+            this.viewButton.TabIndex = 5;
+            this.viewButton.Text = "View";
+            this.viewButton.UseVisualStyleBackColor = true;
+            this.viewButton.Click += new System.EventHandler(this.viewButton_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 25);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(68, 13);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Router name";
+            // 
+            // viewTableRouterTextBox
+            // 
+            this.viewTableRouterTextBox.Location = new System.Drawing.Point(9, 41);
+            this.viewTableRouterTextBox.Name = "viewTableRouterTextBox";
+            this.viewTableRouterTextBox.Size = new System.Drawing.Size(100, 20);
+            this.viewTableRouterTextBox.TabIndex = 3;
+            // 
             // RemoveLinkGroupBox
             // 
             this.RemoveLinkGroupBox.Controls.Add(this.label13);
@@ -325,43 +354,6 @@
             this.RemoveLinkGroupBox.TabIndex = 3;
             this.RemoveLinkGroupBox.TabStop = false;
             this.RemoveLinkGroupBox.Text = "Remove Link";
-            // 
-            // RemoveRouterGroupBox
-            // 
-            this.RemoveRouterGroupBox.Controls.Add(this.removeRouterButton);
-            this.RemoveRouterGroupBox.Controls.Add(this.label12);
-            this.RemoveRouterGroupBox.Controls.Add(this.removeRouterTextBox);
-            this.RemoveRouterGroupBox.Location = new System.Drawing.Point(228, 12);
-            this.RemoveRouterGroupBox.Name = "RemoveRouterGroupBox";
-            this.RemoveRouterGroupBox.Size = new System.Drawing.Size(251, 156);
-            this.RemoveRouterGroupBox.TabIndex = 4;
-            this.RemoveRouterGroupBox.TabStop = false;
-            this.RemoveRouterGroupBox.Text = "Remove Router";
-            // 
-            // removeRouterButton
-            // 
-            this.removeRouterButton.Location = new System.Drawing.Point(9, 121);
-            this.removeRouterButton.Name = "removeRouterButton";
-            this.removeRouterButton.Size = new System.Drawing.Size(100, 23);
-            this.removeRouterButton.TabIndex = 2;
-            this.removeRouterButton.Text = "Remove";
-            this.removeRouterButton.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 20);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Router name";
-            // 
-            // removeRouterTextBox
-            // 
-            this.removeRouterTextBox.Location = new System.Drawing.Point(9, 36);
-            this.removeRouterTextBox.Name = "removeRouterTextBox";
-            this.removeRouterTextBox.Size = new System.Drawing.Size(100, 20);
-            this.removeRouterTextBox.TabIndex = 0;
             // 
             // label13
             // 
@@ -387,6 +379,7 @@
             this.removeLinkButton.TabIndex = 5;
             this.removeLinkButton.Text = "Remove";
             this.removeLinkButton.UseVisualStyleBackColor = true;
+            this.removeLinkButton.Click += new System.EventHandler(this.removeLinkButton_Click);
             // 
             // label14
             // 
@@ -404,30 +397,43 @@
             this.RemLinkNameTextBox1.Size = new System.Drawing.Size(100, 20);
             this.RemLinkNameTextBox1.TabIndex = 3;
             // 
-            // button2
+            // RemoveRouterGroupBox
             // 
-            this.button2.Location = new System.Drawing.Point(9, 121);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.RemoveRouterGroupBox.Controls.Add(this.removeRouterButton);
+            this.RemoveRouterGroupBox.Controls.Add(this.label12);
+            this.RemoveRouterGroupBox.Controls.Add(this.removeRouterTextBox);
+            this.RemoveRouterGroupBox.Location = new System.Drawing.Point(228, 12);
+            this.RemoveRouterGroupBox.Name = "RemoveRouterGroupBox";
+            this.RemoveRouterGroupBox.Size = new System.Drawing.Size(251, 156);
+            this.RemoveRouterGroupBox.TabIndex = 4;
+            this.RemoveRouterGroupBox.TabStop = false;
+            this.RemoveRouterGroupBox.Text = "Remove Router";
             // 
-            // label8
+            // removeRouterButton
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Router name";
+            this.removeRouterButton.Location = new System.Drawing.Point(9, 121);
+            this.removeRouterButton.Name = "removeRouterButton";
+            this.removeRouterButton.Size = new System.Drawing.Size(100, 23);
+            this.removeRouterButton.TabIndex = 2;
+            this.removeRouterButton.Text = "Remove";
+            this.removeRouterButton.UseVisualStyleBackColor = true;
+            this.removeRouterButton.Click += new System.EventHandler(this.removeRouterButton_Click);
             // 
-            // textBox2
+            // label12
             // 
-            this.textBox2.Location = new System.Drawing.Point(9, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 0;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 20);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Router name";
+            // 
+            // removeRouterTextBox
+            // 
+            this.removeRouterTextBox.Location = new System.Drawing.Point(9, 36);
+            this.removeRouterTextBox.Name = "removeRouterTextBox";
+            this.removeRouterTextBox.Size = new System.Drawing.Size(100, 20);
+            this.removeRouterTextBox.TabIndex = 0;
             // 
             // AddLinkGroupBox
             // 
@@ -485,6 +491,7 @@
             this.addLinkButton.TabIndex = 5;
             this.addLinkButton.Text = "Add";
             this.addLinkButton.UseVisualStyleBackColor = true;
+            this.addLinkButton.Click += new System.EventHandler(this.addLinkButton_Click);
             // 
             // label9
             // 
@@ -506,11 +513,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 174);
+            this.ClientSize = new System.Drawing.Size(489, 180);
             this.Controls.Add(this.ViewRoutingTableGroupBox);
             this.Controls.Add(this.RemoveLinkGroupBox);
-            this.Controls.Add(this.SendMessageGroupBox);
             this.Controls.Add(this.AddLinkGroupBox);
+            this.Controls.Add(this.SendMessageGroupBox);
             this.Controls.Add(this.RemoveRouterGroupBox);
             this.Controls.Add(this.AddRouterGroupBox);
             this.Controls.Add(this.groupBox1);
@@ -571,9 +578,9 @@
         private System.Windows.Forms.Button removeLinkButton;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox RemLinkNameTextBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button addRouterButton;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox addRouterTextBox;
         private System.Windows.Forms.GroupBox AddLinkGroupBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox costTextBox;

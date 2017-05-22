@@ -12,10 +12,13 @@ namespace LSRouting
 {
     public partial class MainForm : Form
     {
+        Network network;
+
         public MainForm()
         {
             InitializeComponent();
             HideMenuSelection();
+            network = new Network(10);
         }
 
 
@@ -71,6 +74,71 @@ namespace LSRouting
             }
             selectionTextBox.Text = "";
                 
+        }
+
+        /// <summary>
+        /// SELECTION 1 ADD ROUTER
+        /// </summary>
+        private void addRouterButton_Click(object sender, EventArgs e)
+        {
+            if (addRouterTextBox.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter a router name");
+            }
+            else
+            {
+                if (network.AddRouter(addRouterTextBox.Text))
+                {
+                    MessageBox.Show("Router " + addRouterTextBox.Text + " added succesfully");
+                };
+
+            }
+            addRouterTextBox.Text = "";
+        }
+
+        /// <summary>
+        /// SELECTION 2 ADD LINK
+        /// </summary>
+        private void addLinkButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// SELECTION 3 SEND MESSAGE
+        /// </summary>
+        private void sendButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// SELECTION 4 VIEW ROUTING TABLE
+        /// </summary>
+        private void viewButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewAllButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// SELECTION 5 REMOVE ROUTER
+        /// </summary>
+        private void removeRouterButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// SELECTION 6 REMOVE LINK
+        /// </summary>
+        private void removeLinkButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
