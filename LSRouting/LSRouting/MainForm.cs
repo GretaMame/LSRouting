@@ -19,6 +19,23 @@ namespace LSRouting
             InitializeComponent();
             HideMenuSelection();
             network = new Network();
+            network.AddRouter("R1");
+            network.AddRouter("R2");
+            network.AddRouter("R3");
+            network.AddRouter("R4");
+            network.AddRouter("R5");
+            network.AddRouter("R6");
+            network.AddRouter("R7");
+
+            network.AddLink("R1", "R2", 5);
+            network.AddLink("R1", "R3", 2);
+            network.AddLink("R3", "R2", 3);
+            network.AddLink("R4", "R7", 5);
+            network.AddLink("R3", "R4", 1);
+            network.AddLink("R6", "R4", 10);
+            network.AddLink("R4", "R5", 2);
+            network.AddLink("R7", "R3", 2);
+            network.printRouters();
         }
 
 
@@ -99,7 +116,7 @@ namespace LSRouting
         private void addLinkButton_Click(object sender, EventArgs e)
         {
             int cost;
-            if (addLinkRouterTextBox1.Text.Equals("") && addLinkRouterTextBox2.Text.Equals("")) MessageBox.Show("Enter router names");
+            if (addLinkRouterTextBox1.Text.Equals("") || addLinkRouterTextBox2.Text.Equals("")) MessageBox.Show("Enter router names");
             if (!int.TryParse(costTextBox.Text, out cost)) MessageBox.Show("Invalid cost value");
             if (network.AddLink(addLinkRouterTextBox1.Text, addLinkRouterTextBox2.Text, cost))
             {
@@ -139,7 +156,25 @@ namespace LSRouting
         /// </summary>
         private void viewButton_Click(object sender, EventArgs e)
         {
-            
+            if (viewTableRouterTextBox.Text.Equals("")) MessageBox.Show("PLease enter router name");
+            else
+            {
+                Dictionary<string, string> connections = network.GetList(viewTableRouterTextBox.Text);
+                if (connections != null)
+                {
+                    foreach(string item in connections.Keys)
+                    {
+                        string next;
+                        connections.TryGetValue(item, out next);
+                        Label routingTable = new Label();
+                        routingTable.Text = "D: " + item + " NH: " + next;
+                        ViewRoutingTableGroupBox.Controls.Add(flowLayoutPanel1);
+                        flowLayoutPanel1.Controls.Add(routingTable);
+
+                        Console.WriteLine("Destination: " + item + " Next Hop: " + next);
+                    }
+                }
+            }
         }
 
         private void viewAllButton_Click(object sender, EventArgs e)
@@ -152,7 +187,10 @@ namespace LSRouting
         /// </summary>
         private void removeRouterButton_Click(object sender, EventArgs e)
         {
-
+            if (removeRouterTextBox.Text.Equals("")) MessageBox.Show("Please enter router name");
+            if (network.RemoveRouter(removeRouterTextBox.Text)) MessageBox.Show("Router successfully removed.");
+            else MessageBox.Show("There has been an error while removing the router. Please check the routers name");
+            removeRouterTextBox.Text = "";
         }
 
         /// <summary>
@@ -160,7 +198,12 @@ namespace LSRouting
         /// </summary>
         private void removeLinkButton_Click(object sender, EventArgs e)
         {
-
+            if (RemLinkNameTextBox1.Text.Equals("") || RemLinkNameTextBox2.Text.Equals("")) MessageBox.Show("Please enter router names");
+            if (network.RemoveLink(RemLinkNameTextBox1.Text, RemLinkNameTextBox2.Text))
+            {
+                MessageBox.Show("Link successfully removed");
+            }
+            else MessageBox.Show("There has been a mistake while removing the link");
         }
     }
 }

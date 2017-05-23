@@ -51,6 +51,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.msgRouterNameTextBox1 = new System.Windows.Forms.TextBox();
             this.ViewRoutingTableGroupBox = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.viewAllButton = new System.Windows.Forms.Button();
             this.viewButton = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
@@ -297,16 +298,25 @@
             // 
             // ViewRoutingTableGroupBox
             // 
+            this.ViewRoutingTableGroupBox.Controls.Add(this.flowLayoutPanel1);
             this.ViewRoutingTableGroupBox.Controls.Add(this.viewAllButton);
             this.ViewRoutingTableGroupBox.Controls.Add(this.viewButton);
             this.ViewRoutingTableGroupBox.Controls.Add(this.label20);
             this.ViewRoutingTableGroupBox.Controls.Add(this.viewTableRouterTextBox);
-            this.ViewRoutingTableGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.ViewRoutingTableGroupBox.Location = new System.Drawing.Point(228, 12);
             this.ViewRoutingTableGroupBox.Name = "ViewRoutingTableGroupBox";
             this.ViewRoutingTableGroupBox.Size = new System.Drawing.Size(251, 156);
             this.ViewRoutingTableGroupBox.TabIndex = 5;
             this.ViewRoutingTableGroupBox.TabStop = false;
             this.ViewRoutingTableGroupBox.Text = "View routing table";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 59);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(236, 56);
+            this.flowLayoutPanel1.TabIndex = 7;
             // 
             // viewAllButton
             // 
@@ -331,7 +341,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 25);
+            this.label20.Location = new System.Drawing.Point(6, 20);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(68, 13);
             this.label20.TabIndex = 4;
@@ -339,14 +349,13 @@
             // 
             // viewTableRouterTextBox
             // 
-            this.viewTableRouterTextBox.Location = new System.Drawing.Point(9, 41);
+            this.viewTableRouterTextBox.Location = new System.Drawing.Point(9, 36);
             this.viewTableRouterTextBox.Name = "viewTableRouterTextBox";
             this.viewTableRouterTextBox.Size = new System.Drawing.Size(100, 20);
             this.viewTableRouterTextBox.TabIndex = 3;
             // 
             // RemoveLinkGroupBox
             // 
-            this.RemoveLinkGroupBox.Controls.Add(this.ViewRoutingTableGroupBox);
             this.RemoveLinkGroupBox.Controls.Add(this.label13);
             this.RemoveLinkGroupBox.Controls.Add(this.RemLinkNameTextBox2);
             this.RemoveLinkGroupBox.Controls.Add(this.removeLinkButton);
@@ -534,9 +543,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 180);
-            this.Controls.Add(this.messageRouteGroupBox);
+            this.ClientSize = new System.Drawing.Size(491, 182);
+            this.Controls.Add(this.ViewRoutingTableGroupBox);
             this.Controls.Add(this.RemoveLinkGroupBox);
+            this.Controls.Add(this.messageRouteGroupBox);
             this.Controls.Add(this.AddLinkGroupBox);
             this.Controls.Add(this.SendMessageGroupBox);
             this.Controls.Add(this.RemoveRouterGroupBox);
@@ -613,6 +623,7 @@
         private System.Windows.Forms.TextBox addLinkRouterTextBox1;
         private System.Windows.Forms.GroupBox messageRouteGroupBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 

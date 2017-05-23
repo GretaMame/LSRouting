@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,7 +12,7 @@ namespace LSRouting
     class Router
     {
         public string Name { private set; get; }
-        public List<Router> Neighbors { private set; get; }
+        private List<Router> neighbors;
         public RouterNetwork network { private set; get; }
         private List<int> packets;
         public Dictionary<string, string> connections { private set; get; }
@@ -20,7 +21,7 @@ namespace LSRouting
         public Router(string name)
         {
             this.Name = name;
-            Neighbors = new List<Router>();
+            neighbors = new List<Router>();
             network = new RouterNetwork(20);
             network.addLink(Name);
             packets = new List<int>();
@@ -31,20 +32,25 @@ namespace LSRouting
 
         public void RemoveRouter(Router router)
         {
-            Neighbors.Remove(router);
+            neighbors.Remove(router);
             network.removeEdge(router.Name);
             ReceiveLSP(new LSPacket(LSPacket.GetCounter(), Name, network));
         }
 
         public void RemoveLink(Router router)
         {
-            Neighbors.Remove(router);
+            neighbors.Remove(router);
             network.removeLink(Name, router.Name);
             ReceiveLSP(new LSPacket(LSPacket.GetCounter(), Name, network));
         }
-        public void AddNeighbour(Router router)
+        public void AddNeighbor(Router router)
         {
-            Neighbors.Add(router);
+            neighbors.Add(router);
+        }
+
+        public Router[] GetNeighbors()
+        {
+            return neighbors.ToArray();
         }
 
         private LSPacket GeneratePacket(Router router)
@@ -66,7 +72,7 @@ namespace LSRouting
 
         public void SendLSP(LSPacket packet)
         {
-            foreach (Router router in Neighbors)
+            foreach (Router router in neighbors)
             {
                 router.ReceiveLSP(packet);
             }
@@ -85,8 +91,9 @@ namespace LSRouting
 
         public void SendMessage(string destination, string content)
         {
+            printNeighbors();
             Console.WriteLine("The message is at router {0}", Name);
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
             if (destination.Equals(Name))
             {
                 Console.WriteLine("The message received destination router!");
@@ -95,7 +102,7 @@ namespace LSRouting
             {
                 string sendTo;
                 connections.TryGetValue(destination, out sendTo);
-                foreach (Router router in Neighbors)
+                foreach (Router router in neighbors)
                 {
                     if (sendTo != null && sendTo.Equals(router.Name))
                     {
@@ -108,11 +115,18 @@ namespace LSRouting
 
         public void AddLink(Router neighbor, int cost)
         {
-            Neighbors.Add(neighbor);
-            neighbor.AddNeighbour(this);
+            neighbors.Add(neighbor);
+            neighbor.AddNeighbor(this);
             network.addLink(neighbor.Name);
             network.setLink(Name, neighbor.Name, cost);
             ReceiveLSP(GeneratePacket(neighbor));
+        }
+
+        public void printNeighbors()
+        {
+            foreach (Router r in neighbors)
+                Debug.WriteLine(r.Name);
+            
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -29,7 +30,7 @@ namespace LSRouting
             {
                 if (router.Name.Equals(name))
                 {
-                    foreach(Router r in router.Neighbors)
+                    foreach(Router r in router.GetNeighbors())
                     {
                         r.RemoveRouter(router);
                     }
@@ -44,13 +45,15 @@ namespace LSRouting
         {
             foreach(Router r1 in routers)
             {
-                if (r1.Equals(router1))
+                if (r1.Name.Equals(router1))
                 {
                     foreach(Router r2 in routers)
                     {
-                        if (r2.Equals(router2))
+                        if (r2.Name.Equals(router2))
                         {
                             r1.AddLink(r2, cost);
+                            //r1.printNeighbors();
+                            return true;
                         }
                     }
                 }
@@ -103,6 +106,13 @@ namespace LSRouting
                 }
             }
             return false;
+        }
+
+        public void printRouters()
+        {
+            foreach (Router r in routers)
+                Debug.WriteLine(r.Name);
+
         }
     }
 }
