@@ -13,13 +13,19 @@ namespace LSRouting
         //sequence number of the LSP
         public int Seq { private set; get; }
         //links advertised in the LSP
-        public Network Links { private set; get; }
+        public RouterNetwork Links { private set; get; }
+        private static int counter = 0;
 
-        public LSPacket(string router, int seq, Network links)
+        public LSPacket(int seq, string router, RouterNetwork links)
         {
             this.Router = router;
             this.Seq = seq;
             this.Links = links;
+        }
+
+        public static int GetCounter()
+        {
+            return counter++;
         }
     }
 }

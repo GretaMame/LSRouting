@@ -73,6 +73,8 @@
             this.addLinkButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.addLinkRouterTextBox1 = new System.Windows.Forms.TextBox();
+            this.messageRouteGroupBox = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1.SuspendLayout();
             this.AddRouterGroupBox.SuspendLayout();
             this.SendMessageGroupBox.SuspendLayout();
@@ -80,6 +82,7 @@
             this.RemoveLinkGroupBox.SuspendLayout();
             this.RemoveRouterGroupBox.SuspendLayout();
             this.AddLinkGroupBox.SuspendLayout();
+            this.messageRouteGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -298,7 +301,7 @@
             this.ViewRoutingTableGroupBox.Controls.Add(this.viewButton);
             this.ViewRoutingTableGroupBox.Controls.Add(this.label20);
             this.ViewRoutingTableGroupBox.Controls.Add(this.viewTableRouterTextBox);
-            this.ViewRoutingTableGroupBox.Location = new System.Drawing.Point(228, 12);
+            this.ViewRoutingTableGroupBox.Location = new System.Drawing.Point(0, 0);
             this.ViewRoutingTableGroupBox.Name = "ViewRoutingTableGroupBox";
             this.ViewRoutingTableGroupBox.Size = new System.Drawing.Size(251, 156);
             this.ViewRoutingTableGroupBox.TabIndex = 5;
@@ -343,6 +346,7 @@
             // 
             // RemoveLinkGroupBox
             // 
+            this.RemoveLinkGroupBox.Controls.Add(this.ViewRoutingTableGroupBox);
             this.RemoveLinkGroupBox.Controls.Add(this.label13);
             this.RemoveLinkGroupBox.Controls.Add(this.RemLinkNameTextBox2);
             this.RemoveLinkGroupBox.Controls.Add(this.removeLinkButton);
@@ -509,12 +513,29 @@
             this.addLinkRouterTextBox1.Size = new System.Drawing.Size(100, 20);
             this.addLinkRouterTextBox1.TabIndex = 3;
             // 
+            // messageRouteGroupBox
+            // 
+            this.messageRouteGroupBox.Controls.Add(this.flowLayoutPanel);
+            this.messageRouteGroupBox.Location = new System.Drawing.Point(228, 12);
+            this.messageRouteGroupBox.Name = "messageRouteGroupBox";
+            this.messageRouteGroupBox.Size = new System.Drawing.Size(251, 156);
+            this.messageRouteGroupBox.TabIndex = 6;
+            this.messageRouteGroupBox.TabStop = false;
+            this.messageRouteGroupBox.Text = "Message Route Update";
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Location = new System.Drawing.Point(9, 19);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(236, 131);
+            this.flowLayoutPanel.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 180);
-            this.Controls.Add(this.ViewRoutingTableGroupBox);
+            this.Controls.Add(this.messageRouteGroupBox);
             this.Controls.Add(this.RemoveLinkGroupBox);
             this.Controls.Add(this.AddLinkGroupBox);
             this.Controls.Add(this.SendMessageGroupBox);
@@ -538,6 +559,7 @@
             this.RemoveRouterGroupBox.PerformLayout();
             this.AddLinkGroupBox.ResumeLayout(false);
             this.AddLinkGroupBox.PerformLayout();
+            this.messageRouteGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -589,6 +611,8 @@
         private System.Windows.Forms.Button addLinkButton;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox addLinkRouterTextBox1;
+        private System.Windows.Forms.GroupBox messageRouteGroupBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
     }
 }
 

@@ -18,5 +18,10 @@ namespace LSRouting
             destination = dest;
             this.content = content;
         }
+
+        public void run()
+        {
+            router.SendMessage(destination, content);
+        }
     }
 }

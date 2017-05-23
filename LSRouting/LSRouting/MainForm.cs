@@ -18,7 +18,7 @@ namespace LSRouting
         {
             InitializeComponent();
             HideMenuSelection();
-            network = new Network(10);
+            network = new Network();
         }
 
 
@@ -30,6 +30,7 @@ namespace LSRouting
             RemoveRouterGroupBox.Visible = false;
             SendMessageGroupBox.Visible = false;
             ViewRoutingTableGroupBox.Visible = false;
+            messageRouteGroupBox.Visible = false;
         }
 
         private void selectItemButton_Click(object sender, EventArgs e)
@@ -57,6 +58,9 @@ namespace LSRouting
                         break;
                     case (6):
                         RemoveLinkGroupBox.Visible = true;
+                        break;
+                    default:
+                        MessageBox.Show("PLease enter a selection from the menu(1-6) :)");
                         break;
                 }
             }
@@ -115,7 +119,19 @@ namespace LSRouting
         /// </summary>
         private void sendButton_Click(object sender, EventArgs e)
         {
-
+            if (msgRouterNameTextBox1.Text.Equals("") || msgRouterNameTextBox2.Text.Equals("") || msgTextBox.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter router names and message");
+                return;
+            }
+            messageRouteGroupBox.Visible = true;
+            if (network.SendMessage(msgRouterNameTextBox1.Text, msgRouterNameTextBox2.Text, msgTextBox.Text))
+            {
+                MessageBox.Show("Message delivered successfully");
+            }
+            msgTextBox.Text = "";
+            msgRouterNameTextBox1.Text = "";
+            msgRouterNameTextBox2.Text = "";
         }
 
         /// <summary>
@@ -123,7 +139,7 @@ namespace LSRouting
         /// </summary>
         private void viewButton_Click(object sender, EventArgs e)
         {
-            network.printNetwork();
+            
         }
 
         private void viewAllButton_Click(object sender, EventArgs e)

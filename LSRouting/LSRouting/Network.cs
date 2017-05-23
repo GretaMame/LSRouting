@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LSRouting
@@ -9,97 +10,99 @@ namespace LSRouting
     //the graph of the whole network
     class Network
     {
-        private int[][] links;
-        private Dictionary<string, int> routers;
-        int freeIndex;
-        private int MAX_ROUTERS_AMOUNT;
+        private List<Router> routers;
 
-        public Network(int maxRouters)
+        public Network()
         {
-            MAX_ROUTERS_AMOUNT = maxRouters;
-            routers = new Dictionary<string, int>();
-            freeIndex = 0;
-            links = new int[MAX_ROUTERS_AMOUNT][];
-            for (int i = 0; i<MAX_ROUTERS_AMOUNT;i++)
-            {
-                links[i] = new int[MAX_ROUTERS_AMOUNT];
-            }
-
-            for (int i = 0; i<MAX_ROUTERS_AMOUNT;i++)
-                for (int j = 0; j<MAX_ROUTERS_AMOUNT; j++)
-                {
-                    links[i][j] = 0;
-                }
+            routers = new List<Router>();
         }
 
         public bool AddRouter(string name)
         {
-            if (routers.ContainsKey(name))
-            {
-                return false;
-            }
-            routers.Add(name, freeIndex++);
+            routers.Add(new Router(name));
             return true;
         }
 
         public bool RemoveRouter(string name)
         {
-            if (routers.ContainsKey(name))
+            foreach(Router router in routers)
             {
-                //istrinam linkus
-                for (int i = 0; i<MAX_ROUTERS_AMOUNT; i++)
+                if (router.Name.Equals(name))
                 {
-                    links[routers[name]][i] = 0;
-                    links[i][routers[name]] = 0;
+                    foreach(Router r in router.Neighbors)
+                    {
+                        r.RemoveRouter(router);
+                    }
+                    routers.Remove(router);
+                    return true;
                 }
-                //istrinam routeri
-                routers.Remove(name);
-                return true;
             }
-            else  return false;
+            return false;
         }
 
         public bool AddLink(string router1, string router2, int cost)
         {
-            if (routers.ContainsKey(router1) && routers.ContainsKey(router2))
+            foreach(Router r1 in routers)
             {
-                links[routers[router1]][routers[router2]] = cost;
-                links[routers[router2]][routers[router1]] = cost;
-                return true;
+                if (r1.Equals(router1))
+                {
+                    foreach(Router r2 in routers)
+                    {
+                        if (r2.Equals(router2))
+                        {
+                            r1.AddLink(r2, cost);
+                        }
+                    }
+                }
             }
-            else return false;
+            return false;
+        }
+
+        public Dictionary<string, string> GetList(string source)
+        {
+            foreach (Router router in routers)
+            {
+                if (source.Equals(router.Name))
+                {
+                    return router.connections;
+                }
+            }
+            return null;
         }
 
         public bool RemoveLink(string router1, string router2)
         {
-            if (routers.ContainsKey(router1) && routers.ContainsKey(router2))
+            foreach (Router r1 in routers)
             {
-                links[routers[router1]][routers[router2]] = 0;
-                links[routers[router2]][routers[router1]] = 0;
-                return true;
+                if (router1.Equals(r1.Name))
+                {
+                    foreach (Router r2 in routers)
+                    {
+                        if (router2.Equals(r2.Name))
+                        {
+                            r1.RemoveLink(r2);
+                            r2.RemoveLink(r1);
+                            return true;
+                        }
+                    }
+                }
             }
-            else return false;
+            return false;
         }
 
-        
-
-        public void printNetwork()
+        public bool SendMessage(string sender, string receiver, string message)
         {
-            Console.Write("    |");
-            for (int i=0; i<MAX_ROUTERS_AMOUNT;i++)
+            foreach (Router router in routers)
             {
-                Console.Write("{0,-4}|", i);
-            }
-            Console.WriteLine();
-            for (int i = 0; i < MAX_ROUTERS_AMOUNT; i++)
-            {
-                Console.Write("{0,4}|", i);
-                for (int j = 0; j < MAX_ROUTERS_AMOUNT; j++)
+                if (sender.Equals(router.Name))
                 {
-                    Console.Write("{0,4}|", links[i][j]);
+                    Message toSend = new Message(router, receiver, message);
+                    Thread send = new Thread(toSend.run);
+                    send.Start();
+                    return true;
                 }
-                Console.WriteLine();
             }
+            return false;
         }
     }
 }
