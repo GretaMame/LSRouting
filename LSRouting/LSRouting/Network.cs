@@ -19,6 +19,17 @@ namespace LSRouting
             MAX_ROUTERS_AMOUNT = maxRouters;
             routers = new Dictionary<string, int>();
             freeIndex = 0;
+            links = new int[MAX_ROUTERS_AMOUNT][];
+            for (int i = 0; i<MAX_ROUTERS_AMOUNT;i++)
+            {
+                links[i] = new int[MAX_ROUTERS_AMOUNT];
+            }
+
+            for (int i = 0; i<MAX_ROUTERS_AMOUNT;i++)
+                for (int j = 0; j<MAX_ROUTERS_AMOUNT; j++)
+                {
+                    links[i][j] = 0;
+                }
         }
 
         public bool AddRouter(string name)
@@ -31,7 +42,6 @@ namespace LSRouting
             return true;
         }
 
-        //reikia ir linkus istrint
         public bool RemoveRouter(string name)
         {
             if (routers.ContainsKey(name))
@@ -71,7 +81,25 @@ namespace LSRouting
             else return false;
         }
 
+        
 
-
+        public void printNetwork()
+        {
+            Console.Write("    |");
+            for (int i=0; i<MAX_ROUTERS_AMOUNT;i++)
+            {
+                Console.Write("{0,-4}|", i);
+            }
+            Console.WriteLine();
+            for (int i = 0; i < MAX_ROUTERS_AMOUNT; i++)
+            {
+                Console.Write("{0,4}|", i);
+                for (int j = 0; j < MAX_ROUTERS_AMOUNT; j++)
+                {
+                    Console.Write("{0,4}|", links[i][j]);
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
